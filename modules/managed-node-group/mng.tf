@@ -7,7 +7,12 @@ resource "aws_eks_node_group" "eks_managed_node_group" {
     var.subnet_private_1b
   ]
 
-  tags = var.tags
+  tags = merge(
+    var.tags,
+    {
+      name = "${var.name_project}-nodegroup"
+    }
+  )
 
   scaling_config {
     desired_size = 1
