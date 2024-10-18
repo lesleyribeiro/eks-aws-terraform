@@ -26,4 +26,6 @@ module "eks_aws_load_balancer_controller" {
   source       = "./modules/aws-load-balancer-controller"
   name_project = var.name_project
   tags         = local.tags
+  oidc         = module.eks_cluster.oidc
+  cluster_name = module.eks_cluster.cluster_name
 }
